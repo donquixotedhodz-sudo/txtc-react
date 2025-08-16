@@ -89,9 +89,8 @@
 }
 
 /* Password field styles */
-.password-field-container {
+.form-floating {
   position: relative;
-  width: 100%;
 }
 
 .password-toggle {
@@ -121,33 +120,13 @@
   outline: none;
 }
 
-.password-field-container input {
-  padding-right: 35px;
-}
+
 
 .password-toggle i {
   font-size: 14px;
 }
 
-/* Fix form-floating label position */
-.form-floating > .password-field-container > .form-control:focus ~ label,
-.form-floating > .password-field-container > .form-control:not(:placeholder-shown) ~ label {
-  transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
-  background-color: white;
-  padding: 0 0.25rem;
-  height: auto;
-}
 
-/* Ensure proper spacing for the floating label */
-.form-floating > .password-field-container {
-  position: relative;
-}
-
-/* Fix input height and alignment */
-.form-floating > .password-field-container > .form-control {
-  height: calc(3.5rem + 2px);
-  line-height: 1.25;
-}
 
 /* Loading screen styles */
 .loading-screen {

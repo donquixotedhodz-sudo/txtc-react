@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import LoadingScreen from './LoadingScreen';
+import logo from '../logo.png';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -72,9 +73,10 @@ const Login = () => {
           <div className="login-card">
             <div className="login-header">
               <div className="logo-circle">
-                <img src="/logo.png" alt="Logo" className="logo-image" />
+                <img src={logo} alt="Logo" className="logo-image" />
               </div>
-              <h2>Job Order System</h2>
+              <h2>FOURJS TELCOM</h2>
+              <h5 className="text-muted mb-2">Job Order System</h5>
               <p className="text-muted">Please login to continue</p>
             </div>
 
@@ -100,26 +102,25 @@ const Login = () => {
               </div>
 
               <div className="form-floating mb-3">
-                <div className="password-field-container">
-                  <input
-                    type={showPassword ? 'text' : 'password'}
-                    className="form-control"
-                    id="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
-                  {password && (
-                    <button
-                      type="button"
-                      className="password-toggle"
-                      onClick={togglePasswordVisibility}
-                    >
-                      <i className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
-                    </button>
-                  )}
-                </div>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  className="form-control"
+                  id="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  style={{ paddingRight: '35px' }}
+                />
+                {password && (
+                  <button
+                    type="button"
+                    className="password-toggle"
+                    onClick={togglePasswordVisibility}
+                  >
+                    <i className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
+                  </button>
+                )}
                 <label htmlFor="password">Password</label>
               </div>
 
