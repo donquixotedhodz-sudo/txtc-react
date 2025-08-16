@@ -1,42 +1,275 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+/* Root variables */
+:root {
+  --primary-blue: #1a237e;
+  --light-blue: #f8f9fa;
+  --hover-blue: #283593;
+}
+
+/* Login page styles */
+.login-page {
+  background: #f8f9fa;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.login-container {
+  max-width: 400px;
+  width: 100%;
   padding: 2rem;
+}
+
+.login-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.login-header {
   text-align: center;
+  margin-bottom: 2rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.logo-circle {
+  width: 80px;
+  height: 80px;
+  background: var(--primary-blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  box-shadow: 0 4px 15px rgba(26, 35, 126, 0.3);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.logo-image {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.login-header h2 {
+  color: var(--primary-blue);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.form-floating {
+  margin-bottom: 1rem;
+}
+
+.form-floating > .form-control {
+  padding: 1rem 0.75rem;
+}
+
+.form-floating > label {
+  padding: 1rem 0.75rem;
+}
+
+.btn-login {
+  background-color: var(--primary-blue);
+  border: none;
+  padding: 0.75rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+  background-color: var(--hover-blue);
+  transform: translateY(-1px);
+}
+
+.alert {
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Password field styles */
+.password-field-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #6c757d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  z-index: 10;
+  transition: color 0.2s ease;
+}
+
+.password-toggle:hover {
+  color: #495057;
+}
+
+.password-toggle:focus {
+  outline: none;
+}
+
+.password-field-container input {
+  padding-right: 35px;
+}
+
+.password-toggle i {
+  font-size: 14px;
+}
+
+/* Fix form-floating label position */
+.form-floating > .password-field-container > .form-control:focus ~ label,
+.form-floating > .password-field-container > .form-control:not(:placeholder-shown) ~ label {
+  transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
+  background-color: white;
+  padding: 0 0.25rem;
+  height: auto;
+}
+
+/* Ensure proper spacing for the floating label */
+.form-floating > .password-field-container {
+  position: relative;
+}
+
+/* Fix input height and alignment */
+.form-floating > .password-field-container > .form-control {
+  height: calc(3.5rem + 2px);
+  line-height: 1.25;
+}
+
+/* Loading screen styles */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.loading-screen.active {
+  display: flex;
+  opacity: 1;
+}
+
+.loading-logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+  animation: pulse 2s infinite;
+}
+
+.snowflake-loader {
+  width: 80px;
+  height: 80px;
+  position: relative;
+}
+
+.snowflake-loader::before,
+.snowflake-loader::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border: 3px solid var(--light-blue);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.snowflake-loader::before {
+  animation: snowflake-pulse 2s ease-in-out infinite;
+}
+
+.snowflake-loader::after {
+  animation: snowflake-pulse 2s ease-in-out infinite 1s;
+}
+
+.snowflake-loader i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--primary-blue);
+  font-size: 48px;
+  animation: snowflake-beat 2s ease-in-out infinite;
+}
+
+.loading-text {
+  margin-top: 20px;
+  color: var(--primary-blue);
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.progress-container {
+  width: 200px;
+  height: 4px;
+  background: var(--light-blue);
+  border-radius: 2px;
+  margin-top: 15px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background: var(--primary-blue);
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+/* Animations */
+@keyframes snowflake-beat {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.2); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes snowflake-pulse {
+  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Dashboard styles */
+.navbar-brand img {
+  filter: brightness(0) invert(1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .login-container {
+    padding: 1rem;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .login-card {
+    padding: 1.5rem;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
